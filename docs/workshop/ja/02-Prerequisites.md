@@ -20,6 +20,8 @@
 
 - **PowerShell Core (Windowsユーザーのみ)**: WindowsでLinux向けスクリプトを実行する場合に必要です。事前に[PowerShell 7.x (Core)](https://learn.microsoft.com/ja-jp/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)をインストールしておいてください。
 
+- **psql もしくは pgAdmin**: PostgreSQLに接続し、テーブルやデータの確認・操作に利用します。psqlはPostgreSQLのパッケージに含まれているので、[PostgreSQLのダウンロードページ](https://www.postgresql.org/download/)から、pgAdminは[pgAdminのダウンロードページ](https://www.pgadmin.org/download/)から入手可能です。
+
 インストール後、それぞれのコマンドがパスに通っていることを確認しましょう。例えば`azd version`や`az --version`を実行してバージョン情報が表示されれば準備OKです。
 
 ## Azureリージョンの選定条件
