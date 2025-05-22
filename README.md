@@ -61,7 +61,7 @@ azd init
 ```
 
 ### Grant permissions to azd hooks scripts
-If you are deploying the solution on linux OS, grant the following permissions to `predeploy.sh`
+If you are deploying the solution on linux OS and macOS, grant the following permissions to `predeploy.sh`
 ```sh
 cd azd-hooks
 sudo chmod +x predeploy.sh
