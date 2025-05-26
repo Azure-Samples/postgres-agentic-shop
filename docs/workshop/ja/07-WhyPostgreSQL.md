@@ -6,38 +6,42 @@
 
 AgenticShopで扱うデータは主に「製品」と「レビュー」に関するものです。リポジトリのデータセット（Agentic Shopデータセット）には、ヘッドフォン、スマートウォッチ、タブレットの3カテゴリについて、製品と対応するユーザーレビューが含まれています。それぞれに対応して、PostgreSQL上には以下のテーブルが存在します。
 
-**products テーブル（製品情報）**: 製品の基本情報を格納するテーブルです。主なカラムは以下の通りです:
+**product テーブル（製品情報）**: 製品の基本情報を格納するテーブルです。主なカラムは以下の通りです:
 - id: 製品ID（整数, 主キー）
 - name: 製品名（テキスト）
 - category: 製品カテゴリ（テキスト、例: “headphones”, “smartwatches”, “tablets”）
+- price: 価格（整数）
+- brand: ブランド名（可変長テキスト）
 - description: 製品の説明文（テキスト、自由記述の詳細な説明）
-- description_emb: 製品説明文の埋め込みベクトル（vector型）。Azure OpenAIのEmbeddingモデルで生成した1536次元程度のベクトルが格納されています。
-- features: 製品の特徴をまとめたJSONデータ（jsonb型）。LLMを用いて説明文から抽出した特徴量（例えばデザイン、バッテリー性能、防水性能など）がキーと値の形で格納されています。後述のグラフ分析で利用。
+- specifications: 製品の特徴をまとめたJSONデータ（jsonb型）。LLMを用いて説明文から抽出した特徴量（例えばデザイン、バッテリー性能、防水性能など）がキーと値の形で格納されています。後述のグラフ分析で利用。
 
-また、`description_emb`カラムにはベクトル検索を効率化するためのインデックスが作成されています（`pgvector`はInner ProductやCosine距離用のインデックスをサポート）。
+**data_embeddings_products テーブル（製品の埋め込み情報）**: 製品の説明文の埋め込みを格納するテーブルです。
+- embedding: 製品説明文の埋め込みベクトル（vector型）。Azure OpenAIのEmbeddingモデルで生成した1536次元程度のベクトルが格納されています。
+
+また、`embedding`カラムにはベクトル検索を効率化するためのインデックスが作成されています（`pgvector`はInner ProductやCosine距離用のインデックスをサポート）。
 
 **reviews テーブル（レビュー情報）**: ユーザーの製品レビューを格納するテーブルです。主なカラムは以下の通りです:
 - id: レビューID（整数, 主キー）
 - product_id: レビュー対象の製品ID（整数, 外部キーでproducts.idを参照）
 - review_text: レビュー本文（テキスト、ユーザーが書いた自由形式の内容）
-- review_text_emb: レビュー本文の埋め込みベクトル（vector型）。こちらも説明文同様にEmbeddingモデルでベクトル化したもの。
-- features: レビューから抽出した特徴をまとめたJSONデータ（jsonb型）。例えば「soundQuality: positive/negative」や「battery: great battery life」といったキー値が含まれます。
-`review_text_emb`にもベクトルインデックスが作成されています。これにより、レビュー内容を意味的に検索する処理が高速化されています。
+
+**data_embeddings_reviews テーブル（レビューの埋め込み情報）**: ユーザーの製品レビューの埋め込みを格納するテーブルです。主なカラムは以下の通りです:
+- embedding: レビュー本文の埋め込みベクトル（vector型）。
+このカラムにもベクトルインデックスが作成されています。これにより、レビュー内容を意味的に検索する処理が高速化されています。
 
 以上2つのテーブルが中心データとなります。リレーションとして、`reviews.product_id`が`products.id`に対する外部キーとなっており、製品とレビューを紐づけています（1製品に複数レビューが対応）。
 
 さらに、AgenticShopではApache AGEを用いて上記製品・レビュー・特徴をグラフ化しています。グラフ化に際して以下の概念がノード・エッジとして扱われます。
 **ノード**:
-- productノード: 製品1件につき1ノード。属性として製品IDや名前、カテゴリ、特徴JSONなどを保持。
-- reviewノード: レビュー1件につき1ノード。属性としてレビューID、テキスト、特徴JSONなどを保持。
-- featureノード: 製品やレビューから抽出される特徴語（例: “battery life”, “soundQuality”, “waterResistance”, “design”など）ごとにノード。属性に`name`（特徴名）を持つ。
+- Productノード: 製品1件につき1ノード。属性として製品IDや名前、カテゴリ、特徴JSONなどを保持。
+- Reviewノード: レビュー1件につき1ノード。属性としてレビューID、テキスト、特徴JSONなどを保持。
+- Featureノード: 製品やレビューから抽出される特徴語（例: “battery life”, “soundQuality”, “waterResistance”, “design”など）ごとにノード。属性に`name`（特徴名）を持つ。
 
 **エッジ**:
-- (:product)-[:HAS_REVIEW]->(:review): 製品ノードからそのレビューノードへのエッジ。
--	(:product)-[:HAS_FEATURE]->(:feature): 製品ノードから、その製品説明に含まれる特徴ノードへのエッジ。例えば製品説明に「water resistant（防水）」の話があれば、その製品と特徴「waterResistance」を結ぶエッジ。
--	(:review)-[:MENTIONS_FEATURE {sentiment: ...}]->(:feature): レビューノードから、レビュー本文で言及されている特徴ノードへのエッジ。エッジのプロパティ`sentiment`にはその言及がポジティブかネガティブかなど評価が入ります。
+- (:Product)-[:REVIEWS]->(:Review): 製品ノードからそのレビューノードへのエッジ。
+-	(:Product)-[:HAS_FEATURE]->(:Feature): 製品ノードから、その製品説明に含まれる特徴ノードへのエッジ。例えば製品説明に「water resistant（防水）」の話があれば、その製品と特徴「waterResistance」を結ぶエッジ。
 
-これらのグラフデータは、PostgreSQLの`AGE`拡張により`ag_catalog`内に管理されています。実際に`products`や`reviews`テーブルから特徴を抽出してグラフノード・エッジを作成する処理は、デプロイ時のスクリプトやバックエンドの初期化コードで実行されています（例えば全製品について特徴ノードを作り、`HAS_FEATURE`エッジを張る`INSERT`文、全レビューについて`MENTIONS_FEATURE`エッジを張る`INSERT`文など）。
+これらのグラフデータは、PostgreSQLの`AGE`拡張により`ag_catalog`内に管理されています。実際に`products`や`reviews`テーブルから特徴を抽出してグラフノード・エッジを作成する処理は、デプロイ時のスクリプトやバックエンドの初期化コードで実行されています（例えば全製品について特徴ノードを作り、`HAS_FEATURE`エッジを張る`INSERT`文、全レビューについて`REVIEWS`エッジを張る`INSERT`文など）。
 
 ## ベクトル・リランク・グラフデータに対するクエリ
 
