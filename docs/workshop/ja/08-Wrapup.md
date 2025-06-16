@@ -29,4 +29,5 @@ azd down --purge
 
 今回学んだように、Azure Database for PostgreSQLにAI拡張や`pgvector`、Apache AGEを組み合わせることで、シンプルながら強力なAIアプリケーション基盤を構築できます。ぜひ現場のプロジェクトでも応用してみてください。各セクションで触れた技術要素について更に深掘りしたい場合、公式ドキュメントや関連ブログ記事なども参照すると理解が深まるでしょう。
 
-[前へ](07-WhyPostgreSQL.md)
+
+[前へ](07-WhyPostgreSQL.md) | [次へ](09-GraphRAG.md)
