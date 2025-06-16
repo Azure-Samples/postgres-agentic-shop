@@ -4,7 +4,7 @@ description: Agentic Shop
 metadata:
     template: retail-solution-accelerator@0.0.1
 requiredVersions:
-    azd: ">= 1.15.0"
+    azd: ">= 1.14.0"
 
 workflows:
   up:
