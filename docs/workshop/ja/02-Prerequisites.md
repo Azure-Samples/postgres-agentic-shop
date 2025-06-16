@@ -17,6 +17,8 @@
 
 - **Azure CLI拡張機能（rdbms-connect）**: Azure CLIにPostgreSQLサーバーへの一時的トンネリング接続等を追加する拡張です。インストールは`az extension add --name rdbms-connect`で行います。インストール後、`az extension list`で有効になっていることを確認してください。
 
+- **Docker Desktop**: Docker Desktopがインストールされていない場合は[公式サイト](https://www.docker.com/ja-jp/get-started/)から入手してください。
+
 - **Python (3.8以上)**: デプロイ後のアプリケーションやスクリプトの動作に利用します。Pythonがインストールされていない場合は[公式サイト](https://www.python.org/downloads/windows/)から入手してください。Windowsの場合、インストール時に「Add Python to PATH」にチェックを入れておくと便利です。
 
 - **PowerShell Core (Windowsユーザーのみ)**: WindowsでLinux向けスクリプトを実行する場合に必要です。事前に[PowerShell 7.x (Core)](https://learn.microsoft.com/ja-jp/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)をインストールしておいてください。
