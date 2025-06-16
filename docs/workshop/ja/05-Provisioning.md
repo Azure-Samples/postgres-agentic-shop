@@ -2,6 +2,9 @@
 
 ローカルにクローンしたリポジトリには、Azure上にインフラおよびアプリケーションコードをデプロイするための設定が含まれています。ここでは**Azure Developer CLI (azd)** を用いて、必要なAzureリソースのプロビジョニングとアプリケーションのデプロイを行います。所要時間はおおよそ20〜30分程度ですが、Azureのリソース作成状況によっては変動します。
 
+> [!NOTE] 注意
+> CloudShellによるプロビジョニングでは、az config set extension.dynamic_install_allow_preview=true を実行しておいてください。
+
 ## `azd up`コマンドによるプロビジョニング
 
 Azure Developer CLIを使うと、単一のコマンドでインフラの構築からデプロイまで実行できます。以下の手順で進めましょう。
