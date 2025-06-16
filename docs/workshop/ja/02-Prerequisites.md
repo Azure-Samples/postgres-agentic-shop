@@ -19,6 +19,14 @@
 - **Python (3.8以上)**: デプロイ後のアプリケーションやスクリプトの動作に利用します。Pythonがインストールされていない場合は[公式サイト](https://www.python.org/downloads/windows/)から入手してください。Windowsの場合、インストール時に「Add Python to PATH」にチェックを入れておくと便利です。
 
 - **PowerShell Core (Windowsユーザーのみ)**: WindowsでLinux向けスクリプトを実行する場合に必要です。事前に[PowerShell 7.x (Core)](https://learn.microsoft.com/ja-jp/powershell/scripting/install/installing-powershell-on-windows?view=powershell-7.5)をインストールしておいてください。
+インストール後、以下のコマンドを実行してbashが動作することを確認してください。
+```sh
+bash --version
+```
+もしエラーになる場合は、WSLのインストールなど、bashが動作する環境を構築してください。
+```sh
+wsl --install
+```
 
 - **psql もしくは pgAdmin**: PostgreSQLに接続し、テーブルやデータの確認・操作に利用します。psqlはPostgreSQLのパッケージに含まれているので、[PostgreSQLのダウンロードページ](https://www.postgresql.org/download/)から、pgAdminは[pgAdminのダウンロードページ](https://www.pgadmin.org/download/)から入手可能です。
 
