@@ -126,4 +126,4 @@ $$) AS t(count bigint);
 
 などを試すと、グラフにデータが入っていることが確認できます。
 
-[前へ](06-Post-provisioning.md) | [次へ](08-Wrapup.md)
+[前へ](06-Post-provisioning.md) | [次へ](08-GraphRAG.md)

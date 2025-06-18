@@ -17,9 +17,11 @@ Retail solution accelerator provides the following features:
 ## Architecture Diagram
 ![AZURE ARCHITECTURE](https://github.com/user-attachments/assets/f3ca0e0d-0c93-4c0f-be5d-958eace3a138)
 
+## Solution Accelerator Deployment
 
+### CloudShell
+This solution is designed to be deployable via CloudShell. If you prefer to deploy from your local development machine, please follow the steps below.
 
-## Solution Accelerator Deployment 
 ### Prerequisites
 The following serve as prerequisites for deployment of this solution:
 1. [Azure Developer Cli](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/install-azd?tabs=winget-windows%2Cbrew-mac%2Cscript-linux&pivots=os-linux)
@@ -76,12 +78,12 @@ pwsh -NoProfile -Command "Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolic
 ```
 
 ### Solution Deployment
-Run the following command to provision the resources. 
+Run the following command to provision the resources.
 ```sh
 azd up
 ```
 
-Once this command is executed, the prompt asks for subscription for deployment, two locations i.e. one for location of solution accelerator resources and other for location of Azure OpenAI models and the resource group to create. 
+Once this command is executed, the prompt asks for subscription for deployment, two locations i.e. one for location of solution accelerator resources and other for location of Azure OpenAI models and the resource group to create.
 Make sure that you have enough Azure OpenAI model quota in the region of deployment. The Azure OpenAI quota required for this solution is listed below. This configuration can be changed from `main.parameters.json` file in `infra` directory using following parameters. The deployment might take some time and will provide progress of deployment in terminal as well as on Azure Portal.
 - **GPT-4o:** 150K TPM - `AZURE_OPENAI_CHAT_DEPLOYMENT_CAPACITY`
 - **text-embedding-ada-002:** 120K TPM - `AZURE_OPENAI_EMBED_DEPLOYMENT_CAPACITY`
@@ -93,7 +95,7 @@ Make sure that you have enough Azure OpenAI model quota in the region of deploym
 4. When `The resource entity provisioning state is not terminal` error occurs, restart the deployment using `azd up` command.
 
 ## Tear Down
-To destroy all the resources that have been created in the step above as well as remove any accounts deployed by the solution accelerator, use the following command: 
+To destroy all the resources that have been created in the step above as well as remove any accounts deployed by the solution accelerator, use the following command:
 ```sh
 azd down --purge
 ```
