@@ -38,10 +38,20 @@ The resources to be deployed in this hands-on include Azure Database for Postgre
 - **Location close to the database**: From a performance perspective, it is desirable to choose a region for Azure OpenAI that is physically close to the region where Azure Database for PostgreSQL is located. For example, if you create a DB in the Japan East region, you will choose Azure OpenAI in the Japan East or a nearby region (however, compromises may be necessary because the OpenAI service is limited).
 
 - **Regions confirmed to work with CloudShell**: The following regions have been confirmed to work by deploying with CloudShell.
- - Japan East (took 30 mins)
- - Australia East (took 15 mins)
- - South India (took 16 mins)
- - Korea Central (Failed due to lack of text-embedding-ada-002)
+ - Australia East
+ - Brazil South
+ - France Central
+ - Japan East
+ - Norway East
+ - South Africa North
+ - South India
+ - Sweden Central
+ - Switzerland North
+ - UAE North
+ - UK South
+ - West Europe
+ - West US
+ - West US 3
 
 - **Use of preview features**: The Apache AGE extension is available on newly created PostgreSQL servers and cannot be enabled on existing servers. `azd up` automatically creates a new PostgreSQL server, but for peace of mind, check the Azure Portal for any mention of using preview features.
 

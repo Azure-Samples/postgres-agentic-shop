@@ -38,10 +38,20 @@ wsl --install
 - **データベースと近接した場所**: パフォーマンスの観点から、Azure Database for PostgreSQLを配置するリージョンと物理的に近いリージョンをAzure OpenAIに選ぶのが望ましいです。例えば、Japan EastリージョンにDBを作成した場合、Azure OpenAIもJapan Eastまたは近隣のリージョンを選択します（ただしOpenAIサービスが限られるため妥協が必要な場合もあります）。
 
 - **CloudShellでの動作確認済みリージョン**: 以下のリージョンはCloudShellでデプロイして動作を確認済みです。
- - Japan East (took 30 mins)
- - Australia East (took 15 mins)
- - South India (took 16 mins)
- - Korea Central (Failed due to lack of text-embedding-ada-002)
+ - Australia East
+ - Brazil South
+ - France Central
+ - Japan East
+ - Norway East
+ - South Africa North
+ - South India
+ - Sweden Central
+ - Switzerland North
+ - UAE North
+ - UK South
+ - West Europe
+ - West US
+ - West US 3
 
 - **プレビュー機能の利用**: Apache AGE拡張は新規作成のPostgreSQLサーバで利用可能で、既存サーバには有効化できません。`azd up`では自動的に新しいPostgreSQLサーバを作成しますが、念のためAzure Portalでプレビュー機能利用に関する記載がないか確認すると安心です。
 
