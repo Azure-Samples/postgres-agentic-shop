@@ -68,4 +68,4 @@ You can check the OpenAI quota of your Azure subscription on the "Quota + Limit"
 > [!NOTE] Note
 > The deploy capacity (default value) of the above models is also set as a parameter in the prompt at the time of `azd up` execution. If necessary, you can adjust the deploy scale of GPT-4o and the embedding model by editing `infra/main.parameters.json` in the repository (e.g., lowering TPS to save quota).
 
-[Previous](01-Introduction.md) | [Next](03-Integration.md)
+[Next](01-Introduction.md)

@@ -82,4 +82,4 @@ SELECT * FROM ag_catalog.create_graph('shop_graph');
 
 以上の手順によって、Azure Database for PostgreSQL上でAI・ベクトル・グラフの各機能が使えるようになります。本ハンズオンのデプロイスクリプトでは、デプロイ時に自動でこれら拡張の有効化SQLを実行する処理（`azd-hooks`のプリデプロイスクリプト）が組み込まれているため、参加者が手動でSQLを実行する必要はありません。ただし、仕組みを理解するために、Portal等で対象サーバの`azure.extensions`パラメータが設定され拡張がインストール済みになっていること、`azure_ai`や`age`スキーマがデータベース内に作成されていることなどを確認してみると良いでしょう。
 
-[前へ](02-Prerequisites.md) | [次へ](04-Repository.md)
+[前へ](01-Introduction.md) | [次へ](03-Repository.md)

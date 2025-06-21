@@ -37,4 +37,4 @@ cd postgres-agentic-shop
 
 以上でリポジトリの取得は完了です。エディタでコードを開いたり、`README`を一読して全体像を掴んでおくと良いでしょう。特に、本プロジェクトでは**Azure Developer CLI (azd)**を使ってデプロイしますので、`azure.yaml`や`infra`ディレクトリ内のテンプレートにどんなリソースが定義されているか目を通しておくと理解が深まります。
 
-[前へ](03-Integration.md) | [次へ](05-Provisioning.md)
+[前へ](02-Integration.md) | [次へ](04-Provisioning.md)

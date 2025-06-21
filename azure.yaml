@@ -2,72 +2,72 @@
 name: retail-solution-accelerator
 description: Agentic Shop
 metadata:
-    template: retail-solution-accelerator@0.0.1
+  template: retail-solution-accelerator@0.0.1
 requiredVersions:
-    azd: ">= 1.14.0"
+  azd: ">= 1.14.0"
 
 workflows:
   up:
     steps:
       - azd: provision
-      - azd: deploy 
+      - azd: deploy
 
-infra: 
-    bicep: ./infra/main.bicep
+infra:
+  bicep: ./infra/main.bicep
 
 services:
-    backend:
-        project: ./backend
-        language: py
-        module: backend
-        host: containerapp
-        docker:
-            remoteBuild: true
-        hooks:
-            predeploy:
-                posix:               
-                     # linux/macOS hook
-                    shell: sh
-                    interactive: true
-                    continueOnError: false
-                    run: ../azd-hooks/predeploy.sh
-                windows:
-                     # Windows hook
-                    shell: pwsh
-                    interactive: true
-                    continueOnError: false
-                    run: ../azd-hooks/predeploy.ps1    
-    frontend:
-        project: ./frontend
-        language: ts
-        module: frontend
-        host: containerapp
-        docker:
-            context: ./
-            registry: ${AZURE_CONTAINER_REGISTRY_ENDPOINT}
-            path: ./Dockerfile
-            remoteBuild: true
-        hooks:
-            prebuild:
-                posix:                  # run on linux/macOS
-                    shell: sh
-                    interactive: true
-                    continueOnError: false
-                    run: |
-                        BE_APP_ENDPOINT=$(azd env get-value SERVICE_BACKEND_URI)
-                        echo VITE_BE_APP_ENDPOINT=\"$BE_APP_ENDPOINT/\" >> ./.env.local
-                windows:
-                    shell: pwsh         # run on Windows
-                    interactive: true
-                    continueOnError: false
-                    run: |
-                        $beAppEndpoint = azd env get-value SERVICE_BACKEND_URI
-                        $envLine = "VITE_BE_APP_ENDPOINT=`"$beAppEndpoint/`""
-                        Add-Content -Path ".\.env.local" -Value $envLine
-    arize:
-        project: ./arize-phoenix
-        language: py
-        module: arize
-        host: containerapp
-        docker:
-            remoteBuild: true
+  backend:
+    project: ./backend
+    language: py
+    module: backend
+    host: containerapp
+    docker:
+      remoteBuild: true
+    hooks:
+      predeploy:
+        posix:
+          # linux/macOS hook
+          shell: sh
+          interactive: true
+          continueOnError: false
+          run: chmod +x ../azd-hooks/predeploy.sh && ../azd-hooks/predeploy.sh
+        windows:
+          # Windows hook
+          shell: pwsh
+          interactive: true
+          continueOnError: false
+          run: ../azd-hooks/predeploy.ps1
+  frontend:
+    project: ./frontend
+    language: ts
+    module: frontend
+    host: containerapp
+    docker:
+      context: ./
+      registry: ${AZURE_CONTAINER_REGISTRY_ENDPOINT}
+      path: ./Dockerfile
+      remoteBuild: true
+    hooks:
+      prebuild:
+        posix: # run on linux/macOS
+          shell: sh
+          interactive: true
+          continueOnError: false
+          run: |
+            BE_APP_ENDPOINT=$(azd env get-value SERVICE_BACKEND_URI)
+            echo VITE_BE_APP_ENDPOINT=\"$BE_APP_ENDPOINT/\" >> ./.env.local
+        windows:
+          shell: pwsh # run on Windows
+          interactive: true
+          continueOnError: false
+          run: |
+            $beAppEndpoint = azd env get-value SERVICE_BACKEND_URI
+            $envLine = "VITE_BE_APP_ENDPOINT=`"$beAppEndpoint/`""
+            Add-Content -Path ".\.env.local" -Value $envLine
+  arize:
+    project: ./arize-phoenix
+    language: py
+    module: arize
+    host: containerapp
+    docker:
+      remoteBuild: true

@@ -29,4 +29,4 @@ Good job!
 
 As you learned this time, by combining AI extensions, `pgvector`, and Apache AGE with Azure Database for PostgreSQL, you can build a simple yet powerful AI application platform. Please try to apply it in your actual projects. If you want to dig deeper into the technical elements touched on in each section, referring to official documents and related blog articles will deepen your understanding.
 
-[Back](08-GraphRAG.md)
+[Back](07-GraphRAG.md)

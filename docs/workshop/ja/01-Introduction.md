@@ -22,4 +22,4 @@
 
 以上が全体の概要です。このハンズオンでは、以上の特徴を備えたAgenticShopアプリケーションをAzure上にデプロイし、実際にその機能を体験しながら内部でどのような処理が行われているか学んでいきます。
 
-[次へ](02-Prerequisites.md)
+[前へ](00-Prerequisites.md) | [次へ](02-Integration.md)

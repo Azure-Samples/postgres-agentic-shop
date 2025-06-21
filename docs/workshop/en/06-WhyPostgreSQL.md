@@ -114,4 +114,4 @@ $$) AS t(count bigint);
 
 By trying this, you can confirm that data is entered in the graph.
 
-[Previous](06-Post-provisioning.md) | [Next](08-GraphRAG.md)
+[Previous](05-Post-provisioning.md) | [Next](07-GraphRAG.md)

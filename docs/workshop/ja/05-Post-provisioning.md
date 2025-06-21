@@ -47,4 +47,4 @@
 
 以上のように、実際にアプリケーションを操作しながら各機能が期待通り動いているかテストします。特にデータベースの役割が正しく果たされているか（ベクトル検索結果が妥当か、グラフクエリが使われているか）は、Azure Portalの「クエリ パフォーマンス洞察」や`pg_stat_statements`拡張を見れば確認できるでしょう。興味があればバックエンドのログ（App Serviceの場合はLog StreamやApplication Insightsログ）も見てみましょう。Azure OpenAIに投げたプロンプトや応答内容、エラーがあればその内容などが記録されているはずです。
 
-[前へ](05-Provisioning.md) | [次へ](07-WhyPostgreSQL.md)
+[前へ](04-Provisioning.md) | [次へ](06-WhyPostgreSQL.md)

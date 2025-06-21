@@ -63,11 +63,6 @@ azd init
 ```
 
 ### Grant permissions to azd hooks scripts
-If you are deploying the solution on linux OS and macOS, grant the following permissions to `predeploy.sh`
-```sh
-cd azd-hooks
-sudo chmod +x predeploy.sh
-```
 If you are deploying the solution on Windows OS, grant the following permissions to the current session to execute `pwsh` scripts
 ```sh
 Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass

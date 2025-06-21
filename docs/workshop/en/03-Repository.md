@@ -37,4 +37,4 @@ cd postgres-agentic-shop
 
 This completes the acquisition of the repository. It would be good to open the code in an editor or read the `README` to get an overall picture. In particular, in this project, we will deploy using the **Azure Developer CLI (azd)**, so it will deepen your understanding to check what resources are defined in the `azure.yaml` and the templates in the `infra` directory.
 
-[Back](03-Integration.md) | [Next](05-Provisioning.md)
+[Back](02-Integration.md) | [Next](04-Provisioning.md)

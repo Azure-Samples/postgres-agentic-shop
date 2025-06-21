@@ -47,4 +47,4 @@ Once the resource deployment is complete, let's check if the application (Agenti
 
 In this way, test each function while actually operating the application to see if it is working as expected. In particular, whether the role of the database is being properly fulfilled (whether the vector search results are reasonable, whether graph queries are being used) can be confirmed by looking at the "Query Performance Insight" on the Azure Portal or the `pg_stat_statements` extension. If you're interested, also take a look at the backend logs (for example, Log Stream or Application Insights logs if you're using App Service). The prompts and responses thrown to Azure OpenAI, any errors and their contents, etc., should be recorded.
 
-[Back](05-Provisioning.md) | [Next](07-WhyPostgreSQL.md)
+[Back](04-Provisioning.md) | [Next](06-WhyPostgreSQL.md)

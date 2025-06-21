@@ -80,4 +80,4 @@ You can create a graph named `shop_graph` by calling a function from SQL like th
 
 By following these steps, you will be able to use AI, vector, and graph functions on Azure Database for PostgreSQL. In this hands-on deployment script, the process to automatically execute these extension activation SQLs at deployment time (`azd-hooks` pre-deployment script) is built in, so participants do not need to manually execute SQL. However, to understand the mechanism, it would be good to check that the `azure.extensions` parameter of the target server is set in the Portal, etc., the extension is installed, and the `azure_ai` and `age` schemas are created in the database.
 
-[Previous](02-Prerequisites.md) | [Next](04-Repository.md)
+[Previous](01-Introduction.md) | [Next](03-Repository.md)

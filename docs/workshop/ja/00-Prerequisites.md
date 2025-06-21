@@ -68,4 +68,4 @@ Azure OpenAIサービスを利用するには、モデルごとの使用上限�
 > [!NOTE] 注意
 > `azd up`実行時のプロンプトでも、上記モデルのデプロイ容量 (デフォルト値) をパラメータとして設定するようになっています。必要に応じてリポジトリ内の `infra/main.parameters.json` を編集することで、GPT-4oや埋め込みモデルのデプロイスケールを調整できます（クォータ節約のためにTPSを下げる等）。
 
-[前へ](01-Introduction.md) | [次へ](03-Integration.md)
+[次へ](01-Introduction.md)

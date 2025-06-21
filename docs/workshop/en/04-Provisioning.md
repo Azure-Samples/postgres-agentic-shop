@@ -8,13 +8,7 @@ With the Azure Developer CLI, you can execute everything from infrastructure con
 
 1. **Confirm login to Azure CLI (not necessary in CloudShell)**: You have already installed Azure CLI in the preliminary preparation, but check the login status just in case. Run `az account show` on the terminal, and if the subscription information is displayed, you are logged in. If you are not logged in, execute `az login` and complete browser authentication. In addition, `azd` itself also requires authentication to Azure, so execute `azd auth login` (the browser will automatically start and the Azure authentication screen will be displayed. If it does not work, use `azd auth login --use-device-code`).
 
-2. **Grant execution rights to the shell script**: When deploying in a CloudShell, Linux, or macOS environment, you need to grant execution rights to `azd-hooks/predeploy.sh`.
-
-```sh
-chmod +x azd-hooks/predeploy.sh
-```
-
-Also, when deploying on Windows, you may get an error about the script execution policy in PowerShell. You can temporarily bypass this with the following command.
+2. **Grant execution rights to the shell script**: When deploying on Windows, you may get an error about the script execution policy in PowerShell. You can temporarily bypass this with the following command.
 
 ```sh
 PowerShell -ExecutionPolicy Bypass -Scope Process
@@ -58,4 +52,4 @@ If an error occurs during provisioning, please check the error message. Common p
 > [!NOTE] Troubleshooting
 > For general troubleshooting related to Azure Developer CLI, please refer to the [official documentation](https://github.com/Azure-Samples/postgres-agentic-shop).
 
-[Previous](04-Repository.md) | [Next](06-Post-provisioning.md)
+[Previous](03-Repository.md) | [Next](05-Post-provisioning.md)

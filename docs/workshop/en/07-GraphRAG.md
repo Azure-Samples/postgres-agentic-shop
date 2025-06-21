@@ -61,4 +61,4 @@ In AgenticShop, GraphRAG functions as a core technology to sophisticate the back
 
 In summary, the concept of GraphRAG is technically incorporated into the backend directory of the AgenticShop backend, and by building a knowledge graph with Apache AGE and utilizing Cypher queries, and supplying graph information to the LLM agent, it significantly improves the accuracy of multi-agent AI responses and user experience. GraphRAG is the keystone of this solution architecture, providing a foundation for easy advanced search and inference using graph data in future expansions. This approach of utilizing graphs that model various retail domain-specific relationships (product-feature-review-user preference) brings out insights that could not be obtained with traditional RAG methods, and ultimately enhances the quality of responses to end users.
 
-[Previous](07-WhyPostgreSQL.md) | [Next](09-Wrapup.md)
+[Previous](06-WhyPostgreSQL.md) | [Next](08-Wrapup.md)
