@@ -5,7 +5,6 @@ This repository showcases the power of agentic flow with llama index leveraging 
 - [Architecture Diagram](#architecture-Diagram)
 - [Solution Accelerator Deployment](#solution-accelerator-deployment)
 - [Tear Down](#tear-down)
-- [Development Methods](#development-methods)
 
 ## Key Features
 Retail solution accelerator provides the following features:
