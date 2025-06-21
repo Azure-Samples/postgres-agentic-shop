@@ -22,4 +22,4 @@ This solution accelerator has the following features:
 
 That's an overview. In this hands-on, we will deploy the AgenticShop application with the above features on Azure, and while experiencing its functions, we will learn about the internal processes.
 
-[Previous](00-Prerequisites.md)
+[Previous](00-Prerequisites.md) | [Next](02-Integration.md)
