@@ -6,12 +6,6 @@ POSTGRES_USERNAME=$(azd env get-value POSTGRES_USERNAME)
 POSTGRES_DATABASE=$(azd env get-value POSTGRES_DATABASE)
 POSTGRES_PASSWORD=$(azd env get-value POSTGRES_PASSWORD)
 
-# wait until the server created
-az postgres flexible-server wait \
-  --name "$POSTGRES_NAME" \
-  --resource-group "$RESOURCE_GROUP" \
-  --created
-
 az postgres flexible-server execute \
         --admin-user "$POSTGRES_USERNAME" \
         --admin-password "$POSTGRES_PASSWORD" \
