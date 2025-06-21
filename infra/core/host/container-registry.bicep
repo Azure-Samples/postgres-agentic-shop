@@ -70,6 +70,14 @@ param trustPolicy object = {
 @description('Zone redundancy setting')
 param zoneRedundancy string = 'Disabled'
 
+@description('Optional override for the resource group. If empty, uses the module\'s resource group.')
+param targetResourceGroupName string = '' // Add parameter for receiving
+
+// define a scope when built
+var targetScope = empty(targetResourceGroupName)
+  ? resourceGroup()
+  : resourceGroup(targetResourceGroupName)
+
 resource containerRegistry 'Microsoft.ContainerRegistry/registries@2024-11-01-preview' = {
   name: name
   location: location

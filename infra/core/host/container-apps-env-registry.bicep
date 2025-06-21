@@ -10,6 +10,7 @@ param containerRegistryAdminUserEnabled bool = false
 
 module containerAppsEnvironment 'container-apps-environment.bicep' = {
   name: '${name}-container-apps-environment'
+  scope: resourceGroup()
   params: {
     name: containerAppsEnvironmentName
     location: location
@@ -17,14 +18,27 @@ module containerAppsEnvironment 'container-apps-environment.bicep' = {
   }
 }
 
-module containerRegistry 'container-registry.bicep' = {
-  name: '${name}-container-registry'
-  scope: !empty(containerRegistryResourceGroupName) ? resourceGroup(containerRegistryResourceGroupName) : resourceGroup()
+// ACR: for local RG
+module containerRegistryLocal 'container-registry.bicep' = if (empty(containerRegistryResourceGroupName)) {
+  name: 'acr-local'
+  scope: resourceGroup()
   params: {
-    name: containerRegistryName
-    location: location
-    adminUserEnabled: containerRegistryAdminUserEnabled
-    tags: tags
+    name                : containerRegistryName
+    location            : location
+    adminUserEnabled    : containerRegistryAdminUserEnabled
+    tags                : tags
+  }
+}
+
+// ACR: for cross RG
+module containerRegistryCrossRG 'container-registry.bicep' = if (!empty(containerRegistryResourceGroupName)) {
+  name: 'acr-cross'
+  scope: resourceGroup(containerRegistryResourceGroupName)
+  params: {
+    name             : containerRegistryName
+    location         : location
+    adminUserEnabled : containerRegistryAdminUserEnabled
+    tags             : tags
   }
 }
 
@@ -32,6 +46,18 @@ output defaultDomain string = containerAppsEnvironment.outputs.defaultDomain
 output environmentName string = containerAppsEnvironment.outputs.name
 output environmentId string = containerAppsEnvironment.outputs.id
 
-output registryLoginServer string = containerRegistry.outputs.loginServer
-output registryName string = containerRegistry.outputs.name
-output registryid string = containerRegistry.outputs.id
+// switch output
+var loginServerOut = empty(containerRegistryResourceGroupName)
+  ? containerRegistryLocal.outputs.loginServer
+  : containerRegistryCrossRG.outputs.loginServer
+output registryLoginServer string = loginServerOut
+
+var loginServerName = empty(containerRegistryResourceGroupName)
+  ? containerRegistryLocal.outputs.name
+  : containerRegistryCrossRG.outputs.name
+output registryName string = loginServerName
+
+var loginServerId = empty(containerRegistryResourceGroupName)
+  ? containerRegistryLocal.outputs.id
+  : containerRegistryCrossRG.outputs.id
+output registryid string = loginServerId
