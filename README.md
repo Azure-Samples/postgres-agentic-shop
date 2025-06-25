@@ -36,8 +36,8 @@ These modules and best practices will be finalized and implemented soon.
 ### Clone Repository
 Clone the repository. Once done, navigate to the repository
 ```sh
-git clone https://github.com/EmumbaOrg/retail-solution-accelerator.git
-cd retail-solution-accelerator
+git clone https://github.com/Azure-Samples/postgres-agentic-shop.git
+cd postgres-agentic-shop
 ```
 
 ### Login to your Azure account
