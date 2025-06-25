@@ -14,7 +14,7 @@ Retail solution accelerator provides the following features:
 - Debug panel using Arize Phoenix tracing for agent triggers and tracking
 
 ## Architecture Diagram
-![AZURE ARCHITECTURE](https://github.com/user-attachments/assets/f3ca0e0d-0c93-4c0f-be5d-958eace3a138)
+![AZURE ARCHITECTURE](./docs/images/arch-diagram.png)
 
 ## Solution Accelerator Deployment
 
@@ -37,8 +37,8 @@ These modules and best practices will be finalized and implemented soon.
 ### Clone Repository
 Clone the repository. Once done, navigate to the repository
 ```sh
-git clone https://github.com/EmumbaOrg/retail-solution-accelerator.git
-cd retail-solution-accelerator
+git clone https://github.com/Azure-Samples/postgres-agentic-shop.git
+cd postgres-agentic-shop
 ```
 
 ### Login to your Azure account
