@@ -10,7 +10,7 @@
       "args": [
         "src.main:app",
         "--port",
-        "8000",
+        "80",
         "--log-config",
         "logging_config.yaml",
         "--reload"

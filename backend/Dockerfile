@@ -22,7 +22,7 @@ COPY poetry.lock pyproject.toml ./
 RUN poetry install --no-interaction --no-ansi
 ADD . ./
 
-EXPOSE 8000
+EXPOSE 80
 
 RUN chmod +x ./startup.sh
 CMD ["./startup.sh"]

@@ -46,7 +46,7 @@ module backendapp 'core/host/container-app.bicep' = {
       ]
     )
     secrets: secrets
-    targetPort: 8000
+    targetPort: 80
   }
 }
 

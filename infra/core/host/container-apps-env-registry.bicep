@@ -5,11 +5,11 @@ param tags object = {}
 
 param containerAppsEnvironmentName string
 param containerRegistryName string
-param containerRegistryResourceGroupName string = ''
 param containerRegistryAdminUserEnabled bool = false
 
 module containerAppsEnvironment 'container-apps-environment.bicep' = {
   name: '${name}-container-apps-environment'
+  scope: resourceGroup()
   params: {
     name: containerAppsEnvironmentName
     location: location
@@ -19,7 +19,7 @@ module containerAppsEnvironment 'container-apps-environment.bicep' = {
 
 module containerRegistry 'container-registry.bicep' = {
   name: '${name}-container-registry'
-  scope: !empty(containerRegistryResourceGroupName) ? resourceGroup(containerRegistryResourceGroupName) : resourceGroup()
+  scope: resourceGroup()
   params: {
     name: containerRegistryName
     location: location
@@ -27,6 +27,7 @@ module containerRegistry 'container-registry.bicep' = {
     tags: tags
   }
 }
+
 
 output defaultDomain string = containerAppsEnvironment.outputs.defaultDomain
 output environmentName string = containerAppsEnvironment.outputs.name
