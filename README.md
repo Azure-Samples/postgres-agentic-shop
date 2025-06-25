@@ -15,7 +15,7 @@ Retail solution accelerator provides the following features:
 - Debug panel using Arize Phoenix tracing for agent triggers and tracking
 
 ## Architecture Diagram
-![AZURE ARCHITECTURE](https://github.com/user-attachments/assets/f3ca0e0d-0c93-4c0f-be5d-958eace3a138)
+![AZURE ARCHITECTURE](./docs/images/arch-diagram.png)
 
 
 
