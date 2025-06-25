@@ -81,8 +81,8 @@ azd up
 ```
 
 このコマンドを実行すると、プロンプトがデプロイメントのサブスクリプション、ソリューションアクセラレータリソースの場所とAzure OpenAIモデルの場所、および作成するリソースグループを尋ねます。デプロイメントの地域で十分なAzure OpenAIモデルのクォータがあることを確認してください。このソリューションに必要なAzure OpenAIのクォータは以下に記載されています。この設定は、`infra`ディレクトリの`main.parameters.json`ファイルを使用して以下のパラメータで変更できます。デプロイメントには時間がかかる場合があり、進行状況はターミナルとAzure Portalの両方で提供されます。
-- **GPT-4o:** 150K TPM - `AZURE_OPENAI_CHAT_DEPLOYMENT_CAPACITY`
-- **text-embedding-ada-002:** 120K TPM - `AZURE_OPENAI_EMBED_DEPLOYMENT_CAPACITY`
+- **GPT-4o:** 140K TPM - `AZURE_OPENAI_CHAT_DEPLOYMENT_CAPACITY`
+- **text-embedding-ada-002:** 60K TPM - `AZURE_OPENAI_EMBED_DEPLOYMENT_CAPACITY`
 
 ### トラブルシューティング
 1. `azd cli`のトラブルシューティングガイドは[こちら](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/troubleshoot?tabs=Browser)です。

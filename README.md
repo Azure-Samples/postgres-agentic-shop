@@ -79,8 +79,8 @@ azd up
 
 Once this command is executed, the prompt asks for subscription for deployment, two locations i.e. one for location of solution accelerator resources and other for location of Azure OpenAI models and the resource group to create.
 Make sure that you have enough Azure OpenAI model quota in the region of deployment. The Azure OpenAI quota required for this solution is listed below. This configuration can be changed from `main.parameters.json` file in `infra` directory using following parameters. The deployment might take some time and will provide progress of deployment in terminal as well as on Azure Portal.
-- **GPT-4o:** 150K TPM - `AZURE_OPENAI_CHAT_DEPLOYMENT_CAPACITY`
-- **text-embedding-ada-002:** 120K TPM - `AZURE_OPENAI_EMBED_DEPLOYMENT_CAPACITY`
+- **GPT-4o:** 140K TPM - `AZURE_OPENAI_CHAT_DEPLOYMENT_CAPACITY`
+- **text-embedding-ada-002:** 60K TPM - `AZURE_OPENAI_EMBED_DEPLOYMENT_CAPACITY`
 
 ### Troubleshooting
 1. Troubleshooting guide for `azd cli` is [here](https://learn.microsoft.com/en-us/azure/developer/azure-developer-cli/troubleshoot?tabs=Browser).

@@ -59,9 +59,9 @@ The resources to be deployed in this hands-on include Azure Database for Postgre
 
 To use the Azure OpenAI service, a usage limit (quota) for each model must be allocated to your subscription. In particular, the **GPT-4o** model and **Embedding** model used in this hands-on require relatively large request quotas. The default configuration requires the following throughput.
 
-- **GPT-4o model**: Processing capacity of about 150k tokens per minute (150K TPM). The "Model Usage Limit (Requests per minute)" of Azure OpenAI must meet this requirement.
+- **GPT-4o model**: Processing capacity of about 140k tokens per minute (140K TPM). The "Model Usage Limit (Requests per minute)" of Azure OpenAI must meet this requirement.
 
-- **text-embedding-ada-002 (embedding model)**: About 120k tokens per minute (120K TPM).
+- **text-embedding-ada-002 (embedding model)**: About 60k tokens per minute (60K TPM).
 
 You can check the OpenAI quota of your Azure subscription on the "Quota + Limit" page of the Azure Portal or with the `az openai admin quota show` command. If you are short, please request a limit increase when creating the Azure OpenAI resource.
 

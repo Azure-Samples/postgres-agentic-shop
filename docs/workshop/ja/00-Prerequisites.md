@@ -59,9 +59,9 @@ wsl --install
 
 Azure OpenAIサービスを利用するには、モデルごとの使用上限（クォータ）がサブスクリプションに割り当てられている必要があります。特に本ハンズオンで用いる**GPT-4o**モデルや**Embedding**モデルは要求クォータが比較的大きいです。デフォルト構成では以下の程度のスループットが必要となります。
 
-- **GPT-4o モデル**: 1分あたり150kトークン程度の処理能力 (150K TPM)。Azure OpenAIの「モデル使用上限 (Requests per minute)」がこれを満たす必要があります。
+- **GPT-4o モデル**: 1分あたり140kトークン程度の処理能力 (140K TPM)。Azure OpenAIの「モデル使用上限 (Requests per minute)」がこれを満たす必要があります。
 
-- **text-embedding-ada-002 (埋め込みモデル)**: 1分あたり120kトークン程度 (120K TPM)。
+- **text-embedding-ada-002 (埋め込みモデル)**: 1分あたり60kトークン程度 (60K TPM)。
 
 ご自身のAzureサブスクリプションのOpenAIクォータは、Azure Portalの「クォータ + 制限」ページや`az openai admin quota show`コマンドで確認できます。不足している場合は、Azure OpenAIリソースの作成時に上限引き上げのリクエストを申請してください。
 
