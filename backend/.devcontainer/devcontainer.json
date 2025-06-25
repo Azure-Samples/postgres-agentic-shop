@@ -18,7 +18,7 @@
 	},
 	// "postCreateCommand": "./.devcontainer/setupPreCommit.sh",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	"forwardPorts": [8000],
+	"forwardPorts": [80],
 
 	// Uncomment the next line to run commands after the container is created.
 	// "postCreateCommand": "cat /etc/os-release",
