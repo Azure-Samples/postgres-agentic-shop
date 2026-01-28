@@ -6,7 +6,8 @@ ENV POETRY_VERSION=1.8.2 \
     PATH="/root/.local/bin:$PATH"
 
 # System Dependcies
-RUN apt-get update \
+RUN rm -f /etc/apt/sources.list.d/yarn.list \
+    apt-get update \
     && apt-get install --no-install-recommends -y curl \
     # Installing `poetry` package manager:
     # https://github.com/python-poetry/poetry
