@@ -31,7 +31,7 @@ arize-phoenix = "^11.24.1"
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.3.3"
-black = "^24.10.0"
+black = ">=24.10,<27.0"
 pre-commit = "^4.0.1"
 isort = "^5.13.2"
 add-trailing-comma = "^3.1.0"
