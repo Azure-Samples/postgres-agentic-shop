@@ -22,15 +22,15 @@ jobs:
 
     steps:
       - name: 🛎 Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: 🔍 Log in to Azure
-        uses: azure/login@v1
+        uses: azure/login@cb79c773a3cfa27f31f25eb3f677781210c9ce3d # v1.6.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: "Folder change check"
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3.0.4
         id: backend
         with:
           filters: |
@@ -70,15 +70,15 @@ jobs:
 
     steps:
       - name: 🛎 Checkout Repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4.4.0
 
       - name: 🔍 Log in to Azure
-        uses: azure/login@v1
+        uses: azure/login@cb79c773a3cfa27f31f25eb3f677781210c9ce3d # v1.6.1
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
       - name: "Folder change check"
-        uses: dorny/paths-filter@v3
+        uses: dorny/paths-filter@0e4a8c6effa4802afeda77dc8d303f8176d7dfad # v3.0.4
         id: frontend
         with:
           filters: |
