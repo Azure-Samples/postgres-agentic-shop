@@ -86,7 +86,9 @@ The following are prerequisites for deploying this solution:
 1. [Azure Developer CLI](https://learn.microsoft.com/azure/developer/azure-developer-cli/install-azd?tabs=winget-windows%2Cbrew-mac%2Cscript-linux&pivots=os-linux)
 2. [Azure CLI](https://learn.microsoft.com/cli/azure/install-azure-cli)
 3. An Azure account with an active subscription.
-4. [Powershell Core](https://learn.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7.5)
+4. A platform-appropriate shell:
+   - **Windows:** [PowerShell 7](https://learn.microsoft.com/powershell/scripting/install/installing-powershell?view=powershell-7.5)
+   - **macOS or Linux:** Bash (included by default on most distributions and macOS)
 5. Appropriate roles attached to user for solution deployment (`Contributor` role and `Role Based Admin Control Administrator` role for the subscription)
 6. [Git](https://git-scm.com/)
 
@@ -123,10 +125,12 @@ In the root of the project, execute the following command to create a new `azd` 
 azd env new
 ```
 
-#### **Windows Users Only – Grant permissions to azd hook scripts**
+#### Configure deployment hooks for your platform
+
+The `azd` workflow automatically uses PowerShell hooks on Windows and Bash hooks on macOS and Linux. PowerShell is not required when deploying from macOS, Linux, or a Linux-based Dev Container.
 
 > **⚠️ IMPORTANT:** This step is **only** required if you are deploying from **Windows**.
-> **Mac** and **Linux** users can skip this — nothing needs to be done.
+> **macOS** and **Linux** users can skip this step.
 
 If you are on **Windows**, run the following command in your current terminal session to allow execution of `pwsh` scripts located in the `azd-hooks` directory:
 

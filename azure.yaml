@@ -8,7 +8,8 @@ requiredVersions:
 
 hooks:
     preprovision:
-            shell: pwsh         # run on pwsh
+        windows:
+            shell: pwsh
             interactive: true
             continueOnError: false
             run: |
@@ -21,12 +22,30 @@ hooks:
                 Write-Host "Capacity validation completed successfully!" -ForegroundColor Green
                 Write-Host "Running environment setup..." -ForegroundColor Yellow
                 ./azd-hooks/preprovision.ps1
+        posix:
+            shell: sh
+            interactive: true
+            continueOnError: false
+            run: |
+                set -e
+                echo "Running capacity validation..."
+                bash ./azd-hooks/preprovision-checklist.sh
+                echo "Capacity validation completed successfully!"
+                echo "Running environment setup..."
+                bash ./azd-hooks/preprovision.sh
     postprovision:
-            shell: pwsh         # run on pwsh
+        windows:
+            shell: pwsh
             interactive: true
             continueOnError: false
             run: |
                 ./azd-hooks/postprovision.ps1
+        posix:
+            shell: sh
+            interactive: true
+            continueOnError: false
+            run: |
+                bash ./azd-hooks/postprovision.sh
 
 workflows:
   up:
@@ -57,21 +76,37 @@ services:
             remoteBuild: true
         hooks:
             prebuild:
-                shell: pwsh         # run on pwsh
-                interactive: true
-                continueOnError: false
-                run: |
-                    $beAppEndpoint = azd env get-value SERVICE_BACKEND_URI
-                    $envLine = "VITE_BE_APP_ENDPOINT=`"$beAppEndpoint/`""
-                    Out-File -Path ".\.env.local" -InputObject $envLine
+                windows:
+                    shell: pwsh
+                    interactive: true
+                    continueOnError: false
+                    run: |
+                        $beAppEndpoint = azd env get-value SERVICE_BACKEND_URI
+                        $envLine = "VITE_BE_APP_ENDPOINT=`"$beAppEndpoint/`""
+                        Out-File -Path ".\.env.local" -InputObject $envLine
+                posix:
+                    shell: sh
+                    interactive: true
+                    continueOnError: false
+                    run: |
+                        set -eu
+                        be_app_endpoint="$(azd env get-value SERVICE_BACKEND_URI)"
+                        printf 'VITE_BE_APP_ENDPOINT="%s/"\n' "${be_app_endpoint%/}" > ./.env.local
             postdeploy:
-                shell: pwsh         # run on pwsh
-                interactive: true
-                continueOnError: false
-                run: |
-                    if (Test-Path -Path ".\.env.local") {
-                        Remove-Item -Path ".\.env.local" -Force
-                    }
+                windows:
+                    shell: pwsh
+                    interactive: true
+                    continueOnError: false
+                    run: |
+                        if (Test-Path -Path ".\.env.local") {
+                            Remove-Item -Path ".\.env.local" -Force
+                        }
+                posix:
+                    shell: sh
+                    interactive: true
+                    continueOnError: false
+                    run: |
+                        rm -f ./.env.local
     arize:
         project: ./arize-phoenix
         language: py
