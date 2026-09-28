@@ -297,14 +297,11 @@ JSON Schema:
 """
 
 content_schema = PersonalizationSection.model_json_schema()
-PRESENTATION_AGENT_PROMPT += (
-    json.dumps(content_schema, indent=2)
-    + """ \n
+PRESENTATION_AGENT_PROMPT += json.dumps(content_schema, indent=2) + """ \n
 Format your output as a JSON object according to the schema above.
 Always provide the response in JSON format only. Do not include markdown formatting, triple backticks,
 or additional text. Do not include any preamble or explanation.
 """
-)
 
 
 USER_QUERY_AGENT_PROMPT = """

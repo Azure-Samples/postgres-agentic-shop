@@ -112,8 +112,10 @@ class MultiAgentFlow(Workflow):
         await self._setup_workflow_context(ctx, ev)
 
         user_profile = await ctx.store.get("user_profile")
-        planning_agent_query = f"Generate an execution plan based on the following user profile\n \
+        planning_agent_query = (
+            f"Generate an execution plan based on the following user profile\n \
             user={user_profile} \n"
+        )
 
         if hasattr(ev, "user_msg") and ev.user_msg:
             planning_agent_query += f"\n and user query={ev.user_msg}"
@@ -360,7 +362,7 @@ class MultiAgentFlow(Workflow):
 
         search_results = await self.memory.search(
             query="User's specific preferences, likes, dislikes, past interactions, and shopping behavior patterns?",
-            user_id=str(user_id),
+            filters={"user_id": str(user_id)},
         )
 
         user_preferences_messages = search_results.get("results", [])

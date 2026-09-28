@@ -25,13 +25,13 @@ sse-starlette = "^2.2.1"
 llama-index = "^0.12.33"
 openinference-instrumentation-llama-index = "^4.2.1"
 json5 = "^0.12.0"
-mem0ai = "^0.1.115"
+mem0ai = ">=0.1.115,<2.1.0"
 arize-phoenix = "^11.24.1"
 
 
 [tool.poetry.group.dev.dependencies]
 pylint = "^3.3.3"
-black = "^24.10.0"
+black = ">=24.10,<27.0"
 pre-commit = "^4.0.1"
 isort = "^5.13.2"
 add-trailing-comma = "^3.1.0"
