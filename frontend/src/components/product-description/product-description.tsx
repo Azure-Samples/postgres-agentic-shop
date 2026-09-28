@@ -1,6 +1,7 @@
 import React from 'react';
 import parse from 'html-react-parser';
 import { BASE_URL } from 'constants/constants';
+import sanitizeProductDescription from './product-description.sanitize';
 import { ImageContainer, ProductDescriptionStyled } from './product-description.style';
 
 interface ProductDescriptionProps {
@@ -10,7 +11,7 @@ interface ProductDescriptionProps {
 
 const ProductDescription = ({ description, image }: ProductDescriptionProps) => (
   <ProductDescriptionStyled>
-    <p>{parse(description)}</p>
+    <p>{parse(sanitizeProductDescription(description))}</p>
     <ImageContainer>
       <img src={`${BASE_URL}${image}`} alt="" style={{ objectFit: 'contain' }} />
     </ImageContainer>
